@@ -49,6 +49,15 @@ public class TrainSensorTest {
     }
 
     @Test
+    public void RelativeSpeedTest50p() {
+        when(controller.getReferenceSpeed()).thenReturn(100);
+
+        ts.overrideSpeedLimit(50);
+
+        verify(user, times(1)).setAlarmState(false);
+    }
+
+    @Test
     public void NotBetweenInterval490() {
         when(controller.getReferenceSpeed()).thenReturn(450);
 

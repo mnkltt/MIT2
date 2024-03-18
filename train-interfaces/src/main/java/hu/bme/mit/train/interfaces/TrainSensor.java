@@ -11,4 +11,6 @@ public interface TrainSensor {
 	void setTachograph();
 
 	Table<LocalTime,Integer,Integer> getTachograph();
+
+	
 }
