@@ -7,7 +7,7 @@ import hu.bme.mit.train.interfaces.TrainUser;
 import hu.bme.mit.train.sensor.TrainSensorImpl;
 import hu.bme.mit.train.user.TrainUserImpl;
 
-public class TrainSystem extends Thread{
+public class TrainSystem {
 
 	private TrainController controller = new TrainControllerImpl();
 	private TrainUser user = new TrainUserImpl(controller);
@@ -29,7 +29,9 @@ public class TrainSystem extends Thread{
 		Thread t = new Thread(Runnable);
 		t.start();
 	}
+	
 	public void run() {
+		printf("Változtatás");
 		controller.getController().followSpeed();
 	}
 
