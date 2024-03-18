@@ -29,13 +29,13 @@ public class TrainSystem {
 	}
 
 
-	public static void main(String[] args) throws InterruptedException
+	public void main(String[] args) throws InterruptedException
     {
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                controller.getController().followSpeed();
+                controller.followSpeed();
             }
         }, 0, 1000);
     }
