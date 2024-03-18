@@ -22,31 +22,38 @@ public class TrainSensorTest {
 	}
 
     @Test
-    public void NotBetweenInterval() {
-        when(user.getAlarmState()).thenReturn(true);
+    public void NotBetweenInterval550() {
+        when(controller.getReferenceSpeed()).thenReturn(400);
 
-        ts.overrideSpeedLimit(600);
-        Assert.assertEquals(true, user.getAlarmState());
+        ts.overrideSpeedLimit(550);
 
-        verify(user, times(1)).getAlarmState();
+        verify(user, times(1)).setAlarmState(true);
     }
 
     @Test
     public void BetweenInterval() {
-        when(user.getAlarmState()).thenReturn(false);
+        when(controller.getReferenceSpeed()).thenReturn(250);
 
         ts.overrideSpeedLimit(300);
-        Assert.assertEquals(false, user.getAlarmState());
 
-        verify(user, times(1)).getAlarmState();
+        verify(user, times(1)).setAlarmState(false);
     }
 
     @Test
     public void RelativeSpeedTest() {
-        when(user.getAlarmState()).thenReturn(false);
+        when(controller.getReferenceSpeed()).thenReturn(150);
 
-        ts.overrideSpeedLimit(300);
-        Assert.assertEquals(false, user.getAlarmState());
+        ts.overrideSpeedLimit(50);
 
-        verify(user, times(1)).getAlarmState();
+        verify(user, times(1)).setAlarmState(true);
     }
+
+    @Test
+    public void NotBetweenInterval490() {
+        when(controller.getReferenceSpeed()).thenReturn(450);
+
+        ts.overrideSpeedLimit(490);
+
+        verify(user, times(1)).setAlarmState(false);
+    }
+}
